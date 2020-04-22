@@ -3,8 +3,8 @@
 const inquirer = require("inquirer")
 
 //start asking questions here
-async function ManagerQuest() {
-    inquirer.prompt([
+function ManagerQuest() {
+    return inquirer.prompt([
         {
             type: "input",
             name: "name",
@@ -27,6 +27,12 @@ async function ManagerQuest() {
         },
     ])
 }
+
+//log the answers
+ManagerQuest()
+    .then(async function(answers) {
+        console.log(answers)
+    })
 
 //export out
 module.exports = ManagerQuest;
