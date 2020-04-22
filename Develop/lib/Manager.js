@@ -33,6 +33,9 @@ ManagerQuest()
     .then(async function(answers) {
         console.log(answers)
     })
+    .catch(function (err) {
+        console.log(err);
+    })
 
 //export out
 module.exports = ManagerQuest;

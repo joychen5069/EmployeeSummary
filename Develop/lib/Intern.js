@@ -27,4 +27,13 @@ async function InternQuest() {
     ])
 }
 
+//log answers
+InternQuest()
+    .then(async function(answers) {
+        console.log(answers)
+    })
+    .catch(function (err) {
+        console.log(err);
+    })
+
 module.exports = InternQuest;
