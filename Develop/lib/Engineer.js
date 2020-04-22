@@ -27,11 +27,5 @@ async function EngineerQuest() {
     ])
 }
 
-EngineerQuest();
-//need to ask for ID#
-
-//need to ask for email
-
-//need to ask for GitHub Username
-
 //export out
+module.exports = EngineerQuest;

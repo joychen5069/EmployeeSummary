@@ -27,4 +27,4 @@ async function InternQuest() {
     ])
 }
 
-InternQuest();
+module.exports = InternQuest;
