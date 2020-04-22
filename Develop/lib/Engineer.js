@@ -2,8 +2,8 @@
 const inquirer = require("inquirer")
 
 //start asking questions here
-async function EngineerQuest() {
-    inquirer.prompt([
+function EngineerQuest() {
+    return inquirer.prompt([
         {
             type: "input",
             name: "name",
@@ -26,6 +26,15 @@ async function EngineerQuest() {
         },
     ])
 }
+
+//make sure your answers get logged
+EngineerQuest()
+    .then(async function(answers) {
+        console.log(answers)
+    })
+    .catch(function (err) {
+        console.log(err);
+    })
 
 //export out
 module.exports = EngineerQuest;
