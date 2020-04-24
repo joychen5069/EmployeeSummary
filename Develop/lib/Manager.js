@@ -6,7 +6,7 @@ const inquirer = require("inquirer")
 class Manager extends Employee {
     constructor(name, id, email, office){
     super(name, id, email)
-    this.office = office;
+    this.officeNumber = office;
 this.role = "Manager"
     }
 
@@ -25,8 +25,8 @@ getRole() {
     return this.role
 }
 
-getOffice() {
-    return this.office
+getOfficeNumber() {
+    return this.officeNumber
 }
 }
 
