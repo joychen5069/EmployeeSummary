@@ -1,41 +1,34 @@
 // TODO: Write code to define and export the Manager class. HINT: This class should inherit from Employee.
-
+const Employee = require("./Employee.js")
 const inquirer = require("inquirer")
 
 //start asking questions here
-function ManagerQuest() {
-    return inquirer.prompt([
+class Manager extends Employee {
+    constructor(name, id, email, office){
+    super(name, id, email)
+    this.office = office;
+this.role = "Manager"
+    }
+
+getOffice() {
+    inquirer.prompt([
         {
             type: "input",
-            name: "name",
-            message: "What is the Manager's name?"
-        },
-        {
-            type: "input",
-            name: "ID",
-            message: "What is the Manager's ID number?"
-        },
-        {
-            type: "input",
-            name: "email",
-            message: "What is the Manager's email?"
-        },
-        {
-            type: "input",
-            name: "phone",
+            name: "office",
             message: "What is the Manager's office phone number?"
         },
     ])
 }
 
-//log the answers
-ManagerQuest()
-    .then(async function(answers) {
-        console.log(answers)
-    })
-    .catch(function (err) {
-        console.log(err);
-    })
+
+getRole() {
+    return this.role
+}
+
+getOffice() {
+    return this.office
+}
+}
 
 //export out
-module.exports = ManagerQuest;
+module.exports = Manager;

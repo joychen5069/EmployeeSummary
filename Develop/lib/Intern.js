@@ -1,24 +1,17 @@
 // TODO: Write code to define and export the Intern class.  HINT: This class should inherit from Employee.
 const inquirer = require("inquirer")
+const Employee = require("./Employee.js")
 
 //start asking questions here
-async function InternQuest() {
-    inquirer.prompt([
-        {
-            type: "input",
-            name: "name",
-            message: "What is the Intern's name?"
-        },
-        {
-            type: "input",
-            name: "ID",
-            message: "What is the Intern's ID number?"
-        },
-        {
-            type: "input",
-            name: "email",
-            message: "What is the Intern's email?"
-        },
+class Intern extends Employee {
+    constructor(name, id, email, school) {
+    super(name, id, email);
+    this.school = school;
+    this.role = "Intern"
+    }
+    getInter() {
+        inquirer.prompt([
+        
         {
             type: "input",
             name: "school",
@@ -27,13 +20,15 @@ async function InternQuest() {
     ])
 }
 
-//log answers
-InternQuest()
-    .then(async function(answers) {
-        console.log(answers)
-    })
-    .catch(function (err) {
-        console.log(err);
-    })
+getRole() {
+    return this.role
+}
 
-module.exports = InternQuest;
+getSchool() {
+    return this.school
+}
+}
+
+
+
+module.exports = Intern;
