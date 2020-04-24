@@ -3,40 +3,51 @@ const inquirer = require("inquirer")
 
 //create class Employee to be parent to all other employees
 class Employee {
-    constructor(name, id, email) {
-        this.name = name,
-        this.id = id,
-        this.email = email
+    constructor(name, Id, email) {
+        this.name = name;
+        this.Id = Id;
+        this.email = email;
     }
 
-    //ask for their name
-    getEmployeeInfo = () => {
+    
+    getEmployeeInfo(){
         inquirer.prompt([
-            {
+            { //ask for their name
                 type: "input",
                 name: "name",
                 message: "What is their name?"
             },
 
-    //ask for their ID number
+            //ask for their ID number
             {
                 type: "input",
-                name: "ID",
+                name: "Id",
                 message: "What is their ID number?"
             },
-        
-    //ask for their email
-       
+
+            //ask for their email
             {
                 type: "input",
                 name: "email",
                 message: "What is their email?"
             }
         ])
-    }
+    };
 
     printInfo() {
-        console.log(`${this.name}, ${this.ID}, ${this.email}`)
+        console.log(`${this.name}, ${this.Id}, ${this.email}`)
+    }
+    getName() {
+        return this.name
+    }
+    getId() {
+        return this.Id
+    }
+    getEmail() {
+        return this.email
+    }
+    getRole() {
+        return "Employee"
     }
 }
 

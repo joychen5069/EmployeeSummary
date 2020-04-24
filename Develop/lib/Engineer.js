@@ -9,22 +9,17 @@ class Engineer extends Employee{
     }
     
     getUser = () => {
-    return inquirer.prompt([
+    inquirer.prompt([
         {
             type: "input",
             name: "github",
             message: "What is the Engineer's GitHub Username?"
         },
     ])
-    }
-
-    getGitHub = ()=>{
-        return this.gitHub
-    }
-}
+    
+}}
 
 //make sure your answers get logged
-
-const engineer = new Engineer(`${this.gitHub}`)
-engineer.getGitHub()
-module.exports = Engineer
+let newEngineer = new Engineer();
+newEngineer.getEmployeeInfo();
+module.exports = newEngineer
