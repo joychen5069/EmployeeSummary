@@ -25,4 +25,6 @@ class Engineer extends Employee{
 
 //make sure your answers get logged
 
-
+const engineer = new Engineer(`${this.gitHub}`)
+engineer.getGitHub()
+module.exports = Engineer

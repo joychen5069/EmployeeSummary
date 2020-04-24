@@ -1,5 +1,6 @@
 const inquirer = require("inquirer")
 const Engineer = require("./Engineer")
+const Employee = require("./Employee")
 
 const prompt = () => {
     return inquirer.prompt ([
@@ -20,4 +21,9 @@ const prompt = () => {
 prompt()
     .then(function(answers) {
         console.log(answers)
+
+        if (answers.role === "Engineer") {
+            const engineer = new Engineer()
+            engineer.getGitHub();
+        }
     });
