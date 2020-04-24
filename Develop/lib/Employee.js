@@ -3,9 +3,9 @@ const inquirer = require("inquirer")
 
 //create class Employee to be parent to all other employees
 class Employee {
-    constructor(name, Id, email) {
+    constructor(name, id, email) {
         this.name = name;
-        this.Id = Id;
+        this.id = id;
         this.email = email;
     }
 
@@ -41,7 +41,7 @@ class Employee {
         return this.name
     }
     getId() {
-        return this.Id
+        return this.id
     }
     getEmail() {
         return this.email
