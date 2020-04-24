@@ -10,31 +10,23 @@ class Employee {
     }
 
     //ask for their name
-    getName = () => {
+    getEmployeeInfo = () => {
         inquirer.prompt([
             {
                 type: "input",
                 name: "name",
                 message: "What is their name?"
-            }
-        ])
-    }
+            },
 
     //ask for their ID number
-    getID = () => {
-       inquirer.prompt([
             {
                 type: "input",
                 name: "ID",
                 message: "What is their ID number?"
-            }
-        ])
+            },
         
-    }
-
     //ask for their email
-    getEmail = () => {
-        inquirer.prompt([
+       
             {
                 type: "input",
                 name: "email",
@@ -49,20 +41,6 @@ class Employee {
 }
 
 let newEmployee = new Employee();
-newEmployee.getName()
-
-    .then(async function (answers) {
-        console.log(answers)
-    })
-    // .then(getID())
-
-    // .then(getEmail())
-
-    // .catch(function (err) {
-    //     console.log(err);
-    // });;
-// newEmployee.getID();
-// newEmployee.getEmail();
-// newEmployee.printInfo();
+newEmployee.getEmployeeInfo()
 
 module.exports = Employee;
