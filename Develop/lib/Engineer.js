@@ -30,6 +30,6 @@ class Engineer extends Employee{
 }
 
 //make sure your answers get logged
-let newEngineer = new Engineer();
-newEngineer.getEmployeeInfo();
+// let newEngineer = new Employee();
+// newEngineer.getEmployeeInfo();
 module.exports = Engineer

@@ -10,17 +10,6 @@ class Manager extends Employee {
 this.role = "Manager"
     }
 
-getOffice() {
-    inquirer.prompt([
-        {
-            type: "input",
-            name: "office",
-            message: "What is the Manager's office phone number?"
-        },
-    ])
-}
-
-
 getRole() {
     return this.role
 }

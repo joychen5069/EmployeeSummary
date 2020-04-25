@@ -51,7 +51,7 @@ class Employee {
     }
 }
 
-let newEmployee = new Employee();
-newEmployee.getEmployeeInfo()
+// let newEmployee = new Employee();
+// newEmployee.getEmployeeInfo()
 
 module.exports = Employee;
