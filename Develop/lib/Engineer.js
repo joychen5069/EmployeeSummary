@@ -9,15 +9,7 @@ class Engineer extends Employee{
         this.role = "Engineer";
     }
     
-    getUser() {
-    inquirer.prompt([
-        {
-            type: "input",
-            name: "github",
-            message: "What is the Engineer's GitHub Username?"
-        },
-    ])
-}
+
 
     getRole() {
         return this.role
