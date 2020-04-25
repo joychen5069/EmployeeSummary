@@ -7,31 +7,6 @@ class Employee {
         this.name = name;
         this.id = id;
         this.email = email;
-    }
-
-    
-    getEmployeeInfo(){
-        inquirer.prompt([
-            { //ask for their name
-                type: "input",
-                name: "name",
-                message: "What is their name?"
-            },
-
-            //ask for their ID number
-            {
-                type: "input",
-                name: "Id",
-                message: "What is their ID number?"
-            },
-
-            //ask for their email
-            {
-                type: "input",
-                name: "email",
-                message: "What is their email?"
-            }
-        ])
     };
 
     printInfo() {

@@ -85,11 +85,23 @@ async function createEngineer() {
             type: "input",
             name: "gitHub",
             message: "What is their gitHub username?"
+        },
+         //ask if they have another employee to add
+         {
+            type: "confirm",
+            name: "add",
+            message: "Would you like to add another employee?"
         }
     ])
         .then(await function (answers) {
+            if(answers.add === true) {
+                const engineer = new Engineer(answers.name, answers.Id, answers.email, answers.gitHub)
+                init();
+            }
+            else {
             const engineer = new Engineer(answers.name, answers.Id, answers.email, answers.gitHub)
             console.log(engineer)
+            }
         })
 }
 
@@ -123,10 +135,25 @@ async function createIntern() {
             name: "school",
             message: "Where does the Intern go to school?"
         },
+
+        //ask if they have another employee to add
+        {
+            type: "confirm",
+            name: "add",
+            message: "Would you like to add another employee?"
+        }
     ])
         .then(await function (answers) {
+            //if they answer yes to Confirm, log answers and restart loop
+            if(answers.add === true) {
+                const intern = new Intern(answers.name, answers.Id, answers.email, answers.school)
+                console.log(intern)
+                init();
+            }
+            else {
             const intern = new Intern(answers.name, answers.Id, answers.email, answers.school)
             console.log(intern)
+            }
         })
 }
 
