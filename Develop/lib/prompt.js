@@ -25,7 +25,7 @@ const prompt = () => {
 async function createManager() {
     inquirer.prompt([
         //ask for their name
-        { 
+        {
             type: "input",
             name: "name",
             message: "What is their name?"
@@ -45,23 +45,23 @@ async function createManager() {
             message: "What is their email?"
         },
         //ask for their office number
-        { 
+        {
             type: "input",
             name: "officeNumber",
             message: "What is their office number?"
         }
     ])
-    .then(await function(answers) {
-        const manager = new Manager(answers.name, answers.Id, answers.email, answers.officeNumber)
-        console.log(manager)
-    })
+        .then(await function (answers) {
+            const manager = new Manager(answers.name, answers.Id, answers.email, answers.officeNumber)
+            console.log(manager)
+        })
 }
 
 //Engineer
 async function createEngineer() {
     inquirer.prompt([
         //ask for their name
-        { 
+        {
             type: "input",
             name: "name",
             message: "What is their name?"
@@ -81,16 +81,53 @@ async function createEngineer() {
             message: "What is their email?"
         },
         //ask for their office number
-        { 
+        {
             type: "input",
             name: "gitHub",
             message: "What is their gitHub username?"
         }
     ])
-    .then(await function(answers) {
-        const engineer = new Engineer(answers.name, answers.Id, answers.email, answers.gitHub)
-        console.log(engineer)
-    })
+        .then(await function (answers) {
+            const engineer = new Engineer(answers.name, answers.Id, answers.email, answers.gitHub)
+            console.log(engineer)
+        })
+}
+
+//Intern
+async function createIntern() {
+    inquirer.prompt([
+        //ask for their name
+        {
+            type: "input",
+            name: "name",
+            message: "What is their name?"
+        },
+
+        //ask for their ID number
+        {
+            type: "input",
+            name: "Id",
+            message: "What is their ID number?"
+        },
+
+        //ask for their email
+        {
+            type: "input",
+            name: "email",
+            message: "What is their email?"
+        },
+
+        //ask for their school
+        {
+            type: "input",
+            name: "school",
+            message: "Where does the Intern go to school?"
+        },
+    ])
+        .then(await function (answers) {
+            const intern = new Intern(answers.name, answers.Id, answers.email, answers.school)
+            console.log(intern)
+        })
 }
 
 async function init() {
@@ -112,10 +149,13 @@ async function select(answer) {
             console.log("engineer");
             createEngineer()
             break;
+
+        //create Intern case
         case ("Intern"):
             console.log("intern");
-            // insert function that relates to other files
+            createIntern();
             break;
+
         default:
             //idk what you did but it broke the code
             console.log("Congrats, you broke the code")

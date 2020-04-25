@@ -5,28 +5,18 @@ const Employee = require("./Employee.js")
 //start asking questions here
 class Intern extends Employee {
     constructor(name, id, email, school) {
-    super(name, id, email);
-    this.school = school;
-    this.role = "Intern"
+        super(name, id, email);
+        this.school = school;
+        this.role = "Intern"
     }
-    getInter() {
-        inquirer.prompt([
-        
-        {
-            type: "input",
-            name: "school",
-            message: "Where does the Intern go to school?"
-        },
-    ])
-}
 
-getRole() {
-    return this.role
-}
+    getRole() {
+        return this.role
+    }
 
-getSchool() {
-    return this.school
-}
+    getSchool() {
+        return this.school
+    }
 }
 
 
