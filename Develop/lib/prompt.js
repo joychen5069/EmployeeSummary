@@ -49,11 +49,20 @@ async function createManager() {
             type: "input",
             name: "officeNumber",
             message: "What is their office number?"
+        },
+
+        //ask if they have another employee to add
+        {
+            type: "confirm",
+            name: "add",
+            message: "Would you like to add another employee?"
         }
     ])
         .then(await function (answers) {
-            const manager = new Manager(answers.name, answers.Id, answers.email, answers.officeNumber)
-            console.log(manager)
+            if (answers.add === true) {
+                init();
+            }
+
         })
 }
 
@@ -86,22 +95,19 @@ async function createEngineer() {
             name: "gitHub",
             message: "What is their gitHub username?"
         },
-         //ask if they have another employee to add
-         {
+        //ask if they have another employee to add
+        {
             type: "confirm",
             name: "add",
             message: "Would you like to add another employee?"
         }
     ])
         .then(await function (answers) {
-            if(answers.add === true) {
-                const engineer = new Engineer(answers.name, answers.Id, answers.email, answers.gitHub)
+            const engineer = new Engineer(answers.name, answers.Id, answers.email, answers.gitHub)
+            if (answers.add === true) {
                 init();
             }
-            else {
-            const engineer = new Engineer(answers.name, answers.Id, answers.email, answers.gitHub)
-            console.log(engineer)
-            }
+
         })
 }
 
@@ -145,15 +151,11 @@ async function createIntern() {
     ])
         .then(await function (answers) {
             //if they answer yes to Confirm, log answers and restart loop
-            if(answers.add === true) {
-                const intern = new Intern(answers.name, answers.Id, answers.email, answers.school)
-                console.log(intern)
+            const intern = new Intern(answers.name, answers.Id, answers.email, answers.school)
+            if (answers.add === true) {
                 init();
             }
-            else {
-            const intern = new Intern(answers.name, answers.Id, answers.email, answers.school)
-            console.log(intern)
-            }
+
         })
 }
 
