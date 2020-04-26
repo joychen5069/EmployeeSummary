@@ -1,6 +1,5 @@
 const inquirer = require("inquirer");
 const Engineer = require("./Engineer");
-// const Employee = require("./Employee");
 const Manager = require("./Manager");
 const Intern = require("./Intern");
 const path = require("path");
