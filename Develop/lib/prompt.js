@@ -1,9 +1,15 @@
-const inquirer = require("inquirer")
-const Engineer = require("./Engineer.js")
-const Employee = require("./Employee.js")
-const Manager = require("./Manager.js")
-const Intern = require("./Intern.js")
+const inquirer = require("inquirer");
+const Engineer = require("./Engineer.js");
+const Employee = require("./Employee.js");
+const Manager = require("./Manager.js");
+const Intern = require("./Intern.js");
+const path = require("path");
+const fs = require("fs");
+
+
+//create const that log to html
 const htmlRenderer = require("./htmlRenderer.js")
+const team = []
 
 const prompt = () => {
     return inquirer.prompt([
@@ -59,10 +65,14 @@ async function createManager() {
         }
     ])
         .then(await function (answers) {
+            //create manager and add to team
+            const manager = new Manager(answers.name, answers.Id, answers.email, answers.officeNumber)
+            team.push(manager)
+
+            //loop if they want to add another employee
             if (answers.add === true) {
                 init();
             }
-
         })
 }
 
@@ -103,7 +113,11 @@ async function createEngineer() {
         }
     ])
         .then(await function (answers) {
+            //push engineer to the team
             const engineer = new Engineer(answers.name, answers.Id, answers.email, answers.gitHub)
+            team.push(engineer)
+            
+            //loop if they want another employee
             if (answers.add === true) {
                 init();
             }
@@ -150,8 +164,11 @@ async function createIntern() {
         }
     ])
         .then(await function (answers) {
-            //if they answer yes to Confirm, log answers and restart loop
+            //push intern to team
             const intern = new Intern(answers.name, answers.Id, answers.email, answers.school)
+           team.push(intern)
+
+            //loop if they answer yes
             if (answers.add === true) {
                 init();
             }
