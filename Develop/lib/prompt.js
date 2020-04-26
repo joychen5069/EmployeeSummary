@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const Engineer = require("./Engineer");
-const Employee = require("./Employee");
+// const Employee = require("./Employee");
 const Manager = require("./Manager");
 const Intern = require("./Intern");
 const path = require("path");
@@ -10,13 +10,15 @@ const fs = require("fs");
 //create const that log to html
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
-const htmlRenderer = require("./htmlRenderer")
+const render = require("./htmlRenderer")
 
 const write = () => {
+    console.log(team)
     if (!fs.existsSync(OUTPUT_DIR)) {
         fs.mkdirSync(OUTPUT_DIR)
     }
-    fs.writeFileSync(outputPath, htmlRenderer(team), "utf-8");
+    fs.writeFileSync(outputPath, render(team), "utf-8");
+    
 }
 
 const team = []
@@ -71,7 +73,8 @@ async function createManager() {
             //create manager and add to team
             const manager = new Manager(answers.name, answers.Id, answers.email, answers.officeNumber)
             team.push(manager)
-
+            // console.log(manager)
+            
             //ask for another employee
             init();
 
