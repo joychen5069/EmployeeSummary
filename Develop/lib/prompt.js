@@ -1,26 +1,36 @@
 const inquirer = require("inquirer");
-const Engineer = require("./Engineer.js");
-const Employee = require("./Employee.js");
-const Manager = require("./Manager.js");
-const Intern = require("./Intern.js");
+const Engineer = require("./Engineer");
+const Employee = require("./Employee");
+const Manager = require("./Manager");
+const Intern = require("./Intern");
 const path = require("path");
 const fs = require("fs");
 
 
 //create const that log to html
-const htmlRenderer = require("./htmlRenderer.js")
+const OUTPUT_DIR = path.resolve(__dirname, "output");
+const outputPath = path.join(OUTPUT_DIR, "team.html");
+const htmlRenderer = require("./htmlRenderer")
+
+const write = () => {
+    if (!fs.existsSync(OUTPUT_DIR)) {
+        fs.mkdirSync(OUTPUT_DIR)
+    }
+    fs.writeFileSync(outputPath, htmlRenderer(team), "utf-8");
+}
+
 const team = []
 
-const prompt = () => {
+const additional = () => {
     return inquirer.prompt([
         {
             type: "list",
             name: "role",
             message: "What role would you like to create for your employee?",
             choices: [
-                "Manager",
                 "Engineer",
-                "Intern"
+                "Intern",
+                "Done"
 
             ]
         }
@@ -34,34 +44,27 @@ async function createManager() {
         {
             type: "input",
             name: "name",
-            message: "What is their name?"
+            message: "What is the Manger's name?"
         },
 
         //ask for their ID number
         {
             type: "input",
             name: "Id",
-            message: "What is their ID number?"
+            message: "What is the Manager's ID number?"
         },
 
         //ask for their email
         {
             type: "input",
             name: "email",
-            message: "What is their email?"
+            message: "What is the Manager's email?"
         },
         //ask for their office number
         {
             type: "input",
             name: "officeNumber",
-            message: "What is their office number?"
-        },
-
-        //ask if they have another employee to add
-        {
-            type: "confirm",
-            name: "add",
-            message: "Would you like to add another employee?"
+            message: "What is the Manager's office number?"
         }
     ])
         .then(await function (answers) {
@@ -69,10 +72,9 @@ async function createManager() {
             const manager = new Manager(answers.name, answers.Id, answers.email, answers.officeNumber)
             team.push(manager)
 
-            //loop if they want to add another employee
-            if (answers.add === true) {
-                init();
-            }
+            //ask for another employee
+            init();
+
         })
 }
 
@@ -83,44 +85,36 @@ async function createEngineer() {
         {
             type: "input",
             name: "name",
-            message: "What is their name?"
+            message: "What is the Engineer's name?"
         },
 
         //ask for their ID number
         {
             type: "input",
             name: "Id",
-            message: "What is their ID number?"
+            message: "What is the Engineer's ID number?"
         },
 
         //ask for their email
         {
             type: "input",
             name: "email",
-            message: "What is their email?"
+            message: "What is the Engineer's email?"
         },
         //ask for their office number
         {
             type: "input",
             name: "gitHub",
-            message: "What is their gitHub username?"
+            message: "What is the Engineer's gitHub username?"
         },
-        //ask if they have another employee to add
-        {
-            type: "confirm",
-            name: "add",
-            message: "Would you like to add another employee?"
-        }
+
     ])
         .then(await function (answers) {
             //push engineer to the team
             const engineer = new Engineer(answers.name, answers.Id, answers.email, answers.gitHub)
             team.push(engineer)
-            
-            //loop if they want another employee
-            if (answers.add === true) {
-                init();
-            }
+
+            init();
 
         })
 }
@@ -132,21 +126,21 @@ async function createIntern() {
         {
             type: "input",
             name: "name",
-            message: "What is their name?"
+            message: "What is the Intern's name?"
         },
 
         //ask for their ID number
         {
             type: "input",
             name: "Id",
-            message: "What is their ID number?"
+            message: "What is the Intern's ID number?"
         },
 
         //ask for their email
         {
             type: "input",
             name: "email",
-            message: "What is their email?"
+            message: "What is the Intern's email?"
         },
 
         //ask for their school
@@ -154,41 +148,26 @@ async function createIntern() {
             type: "input",
             name: "school",
             message: "Where does the Intern go to school?"
-        },
-
-        //ask if they have another employee to add
-        {
-            type: "confirm",
-            name: "add",
-            message: "Would you like to add another employee?"
         }
+        
     ])
         .then(await function (answers) {
             //push intern to team
             const intern = new Intern(answers.name, answers.Id, answers.email, answers.school)
-           team.push(intern)
+            team.push(intern)
 
-            //loop if they answer yes
-            if (answers.add === true) {
                 init();
-            }
-
+            
         })
 }
 
 async function init() {
-    const role = await prompt();
+    const role = await additional();
     select(role)
 }
 
 async function select(answer) {
     switch (answer.role) {
-
-        //create cases to switch between user selected role
-        case ("Manager"):
-            console.log("manager");
-            createManager();
-            break;
 
         //create engineer case
         case ("Engineer"):
@@ -204,11 +183,12 @@ async function select(answer) {
 
         default:
             //idk what you did but it broke the code
-            console.log("Congrats, you broke the code")
+            console.log("Your team.html has been written")
+            write();
             break;
     }
 }
 
 
 
-init();
+createManager();
