@@ -27,21 +27,19 @@ To use this application, run the following commands in your terminal to install 
 * npm i inquirer
 * npm i jest
 
+* or just run npm install
+
 ## Usage 
 
-After you've installed the packages, In order for the application for work, please install the necessary packages and then run node app.js in your terminal
-
-
-## License
-No Licenses Used
-
-## Contributing
-This project has no other contributors.
+After you've installed the packages, in order for the application for work please run node app.js in your terminal and follow the prompts given.
 
 ## Tests
 To test this application, use command 
 
     npm run test
+
+## Demo
+![Demo](Develop/assets/Demo.gif)
 
 ## Questions
   
