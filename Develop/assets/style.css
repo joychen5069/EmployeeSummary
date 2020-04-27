@@ -1,0 +1,13 @@
+body {
+    background-color: rgb(122, 178, 251);
+    font-family: 'Merriweather', serif;
+}
+
+.jumbotron {
+    background-color: rgb(95, 105, 160);
+}
+
+.card {
+    margin-right: 5px;
+    border: double;
+}
